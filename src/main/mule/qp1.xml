@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce" xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
+	xmlns:file="http://www.mulesoft.org/schema/mule/file"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="62562e40-7c04-44f4-860a-565f697a5dd8" >
+		<http:listener-connection host="localhost" port="8081" />
+	</http:listener-config>
+	<flow name="qp1Flow" doc:id="0e5a538a-4834-490d-af93-27829e5e46ea" >
+		<http:listener doc:name="Listener" doc:id="e003ca8d-f19a-435c-8cda-e5904bd98abb" config-ref="HTTP_Listener_config" path="qp"/>
+		<set-payload value="#[attributes.queryParams.sno]" doc:name="Set Payload" doc:id="9b706f27-7f57-4adb-953a-8fe534c83ad6" />
+		<logger level="INFO" doc:name="Logger" doc:id="98bb491b-7a1c-4e6b-ada6-34094a012a06" message="hai "/>
+	</flow>
+</mule>
